@@ -1,0 +1,44 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<Multi_key> <period> <period> : "…" U2026 # HORIZONTAL ELLIPSIS, многоточие
+<Multi_key> <colon> <parenright> : "☺"  # Смайл : )
+
+<Multi_key> <minus> <less>   : "←"  U2190 # Compose -<
+<Multi_key> <minus> <greater> : "→" U2192 # Compose ->
+<Multi_key> <bar> <asciicircum> : "" UE123 # Compose |^
+<Multi_key> <bar> <v> : "" UE125 # Compose |v
+
+<Multi_key> <i> <n> <f> : "∞" U221E # Math inf
+
+<Multi_key> <apostrophe> <apostrophe> : "́" U0301 # Acute
+
+<Multi_key> <t> <m> : "™" U2122 # Compose tm
+<Multi_key> <p> <e> <a> <c> <e> : "☮" U262E # Compose peace
+<Multi_key> <b> <i> <o> : "☣" U2623 # Compose bio
+<Multi_key> <n> <u> <c> <l> <e> <a> <r> : "☢" U2622 # Compose nuclear
+<Multi_key> <h> <e> <a> <r> <t> : "♥" U2665 # Compose heart
+<Multi_key> <w> <a> <r> <n> : "⚠" U26A0 # Compose warn
+<Multi_key> <a> <t> <o> <m> : "⚛" U269B # Compose atom
+<Multi_key> <s> <k> <u> <l> <l> : "☠" U2620 # Compose skull
+<Multi_key> <s> <t> <a> <r> : "★" U2605 # Compose star
+<Multi_key> <y> <i> <n> : "☯" U262F # Compose yin-yang
+<Multi_key> <a> <f> <k> : "☕" U2615 # Compose afk - coffee cup
+<Multi_key> <o> <k> : "✔" U2714 # Compose ok
+
+<Multi_key> <a> <l> <p> <h> <a> : "α" U03B1 # Greek alpha
+<Multi_key> <b> <e> <t> <a>     : "β" U03B2 # Greek beta
+<Multi_key> <g> <a> <m> <m> <a> : "γ" U03B3 # Greek gamma
+<Multi_key> <d> <e> <l> <t> <a> : "δ" U03B4 # Greek delta
+<Multi_key> <e> <p> <s> <i> <l> : "ε" U03B5 # Greek epsilon
+<Multi_key> <e> <t> <a>         : "η" U03B7 # Greek eta
+<Multi_key> <t> <h> <e> <t> <a> : "θ" U03B8 # Greek theta
+<Multi_key> <l> <a> <m> <b> <d> <a> : "λ" U03BB # Greek lambda
+<Multi_key> <m> <u>             : "μ" U03BC # Greek mu
+<Multi_key> <n> <u>             : "ν" U03BD # Greek nu
+<Multi_key> <x> <i>             : "ξ" U03BE # Greek xi
+<Multi_key> <p> <i>             : "π" U03C0 # Greek pi
+<Multi_key> <s> <i> <g> <m> <a> : "σ" U03C3 # Greek sigma
+<Multi_key> <t> <a> <u>         : "τ" U03C4 # Greek tau
+<Multi_key> <p> <h> <i>         : "φ" U03C6 # Greek phi
+<Multi_key> <p> <s> <i>         : "ψ" U03C8 # Greek psi
+<Multi_key> <o> <m> <e> <g> <a> : "ω" U03C9 # Greek omega

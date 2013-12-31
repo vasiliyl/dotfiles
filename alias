@@ -1,0 +1,37 @@
+alias ls='ls --color=auto -hv'
+alias su='sudo su'
+alias apt-get='sudo apt-get'
+alias aptitude='sudo aptitude'
+alias paludis='sudo paludis'
+alias bc='bc -l'
+alias grep='grep --colour'
+alias less='less -i -M -X'
+alias debram='debram -c'
+
+
+alias -g '...'='../..'
+alias -g '....'='../../..'
+alias -g '.....'='../../../..'
+
+alias dh='du -h'
+alias ds='du -hs'
+alias pa='ps aux'
+
+alias install='apt-get install'
+alias search='apt-cache search'
+alias show='apt-cache show'
+
+alias txf='tar xf'
+alias tvf='tar tvf'
+alias tcf='tar jcvf'
+
+alias d='ls'
+alias l='ls'
+alias ll='ls -la'
+
+alias q3a="/usr/lib/ioquake3/ioquake3 +set fs_game cpma"
+
+alias netstat=ss
+
+alias -g G='| grep'
+alias -g L='| less'

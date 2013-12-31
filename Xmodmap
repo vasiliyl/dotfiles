@@ -1,0 +1,73 @@
+!
+! Swap Caps_Lock and Control_L
+! Set ISO_Next_Group to Control_L
+! 
+remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+keysym Control_L = ISO_Next_Group
+
+
+!
+! Bind Hyper to right shift
+!
+remove Shift = Shift_R
+keysym Shift_R = Hyper_R
+add Mod3 = Hyper_R
+
+! I use back as backspace
+keysym XF86Back = BackSpace
+
+! Bind multikey to Menu
+!keycode 135 = Multi_key
+
+
+! Microsoft Ergonomic Keyboard 4000
+! Zoom should work like mouse wheel already
+! Homepage, Search, E-Mail
+!keycode 130 = XF86HomePage
+!keycode 229 = XF86Search
+!keycode 120 = XF86Mail
+! 1 - 5 special keys
+!keycode 192 = XF86Launch1
+!keycode 193 = XF86Launch2
+!keycode 194 = XF86Launch3
+!keycode 195 = XF86Launch4
+!keycode 196 = XF86Launch5
+! Audio Mute, Volume Lower, Volume Raise, Play
+!keycode 160 = XF86AudioMute
+!keycode 174 = XF86AudioLowerVolume
+!keycode 176 = XF86AudioRaiseVolume
+!keycode 162 = XF86AudioPlay
+! Calc
+!keycode 161 = XF86Calculator
+! Favourites
+!keycode 93 = XF86Favorites
+
+! Back/Forward
+! I use back as backspace
+!keycode 234 = BackSpace
+!keycode 233 = XF86Forward
+
+! F1 - F12 second row without F-Caps-Key (right side of F12)
+!keycode 245 = osfHelp
+!keycode 135 = osfUndo
+!keycode 138 = osfRestore
+!keycode 137 = XF86New
+!keycode 191 = XF86Open
+!keycode 175 = XF86Close
+!keycode 228 = XF86Reply
+!keycode 142 = XF86MailForward
+!keycode 218 = XF86Send
+!keycode 184 = XF86Spell
+!keycode 213 = XF86Save
+!keycode 185 = XF86Launch6
+! the three keys top left in number block
+! the backspace key right has code 22 already and works like backspace
+!keycode 157 = equal
+!keycode 246 = parenleft
+!keycode 251 = parenright
+
+! zoom-stick
+!keycode 254 = XF86ScrollUp
+!keycode 255 =XF86ScrollDown

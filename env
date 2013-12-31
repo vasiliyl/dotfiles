@@ -1,0 +1,23 @@
+
+eval `dircolors`
+
+export HOSTNAME=`hostname -s`
+
+export PATH=~/.bin:~/.local/bin:~/.local/sbin:~/.local/libexec:$PATH:/usr/local/bin:/usr/bin:/bin
+export LD_LIBRARY_PATH=~/.local/lib
+export MANPATH=~/.local/share/man:$MANPATH
+
+export PKG_CONFIG_PATH=~/.local/lib/pkgconfig
+
+export SHELL_QUOTING=shell
+export QUOTING_STYLE=shell
+
+export PAGER=less
+
+export VISUAL=gvim
+export EDITOR=$VISUAL
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+export RTE_SDK=$HOME/Work/dpdk

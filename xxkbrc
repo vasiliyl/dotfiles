@@ -1,0 +1,11 @@
+XXkb.mainwindow.enable: yes
+XXkb.mainwindow.type: top
+XXkb.mainwindow.geometry: 16x16+950-0
+XXkb.mainwindow.border.width: 0
+XXkb.mainwindow.image.1: en15.xpm
+XXkb.mainwindow.image.2: ru15.xpm
+
+XXkb.button.enable: no
+
+XXkb.controls.add_when_start: yes
+XXkb.controls.add_when_create: yes
