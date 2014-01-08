@@ -105,6 +105,7 @@ bindsym $mod+Delete reload
 bindsym $mod+End restart
 bindsym $mod+Next exit
 
+bindsym F12 exec gmrun
 
 for_window [class="Plasma"] floating enable
 floating_minimum_size -1 x -1
