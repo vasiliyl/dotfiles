@@ -1,0 +1,10 @@
+group user
+
+set defsearch=google
+
+map [ <C-p>
+map ] <C-n>
+map { <C-u>
+map } <C-d>
+
+" vim: set ft=pentadactyl:

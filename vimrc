@@ -16,7 +16,21 @@ Bundle 'bkad/CamelCaseMotion'
 Bundle 'tpope/vim-surround'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'paradigm/SkyBison'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'szw/vim-ctrlspace' 
+Bundle 'tommcdo/vim-exchange'
+"Bundle 'itchyny/lightline.vim'
+Bundle 'repmo.vim'
+
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'Shougo/neosnippet.vim'
+Bundle 'Shougo/neosnippet-snippets'
 " }
+
+" C {
+"Bundle 'justmao945/vim-clang'
+" }
+
 
 " Go {
 Bundle 'jnwhiteh/vim-golang'
@@ -54,7 +68,7 @@ set undodir=$HOME/.undos
 set undofile
 
 set tabstop=4
-set shiftwidth=0
+set shiftwidth=4
 
 if has ('x') && has ('gui') " On Linux use + register for copy-paste
     set clipboard=unnamedplus
@@ -69,6 +83,9 @@ imap <c-s> <Esc><c-s>a
 
 set number
 
+
+nmap S cc
+
 " Backups {
 " TODO
 " }
@@ -76,7 +93,7 @@ set number
 " UI {
 set cursorline                  " Highlight current line
 set showmatch                   " Show matching brackets/parenthesis
-set incsearch ignorecase hlsearch
+set incsearch ignorecase smartcase hlsearch
 set wildmenu wildmode=list:longest,full  " Show list instead of just completing
 
 set scroll=5
@@ -84,6 +101,50 @@ set scrolloff=15
 " }
 
 
+" }
+
+" lightline {
+"set laststatus=2
+"let g:lightline = {
+"            \ 'colorscheme': 'jellybeans',
+"            \ 'active': { 
+"            \ 'left': [['mode'], ['filename'], ['myfunc']],
+"            \ 'component_function': {
+"            \ 'myfunc': 'MyFunc',
+"            \ },
+"            \ },
+"            \ }
+
+"\   'cs_info': 'ctrlspace#statusline_info_segment',
+"\   'cs_key_info': 'ctrlspace#statusline_key_info_segment',
+
+"\ 'right':	[['cs_info'], ['cs_key_info']],
+" }
+
+
+" ctrlspace {
+set hidden
+let g:ctrlspace_default_mapping_key = '<leader>s'
+" }
+
+
+
+" neocomplete {
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#max_list = 30
+let g:neocomplete#disable_auto_complete = 1
+let g:neocomplete#enable_smart_case = 1
+
+inoremap	<expr><C-j>	neocomplete#start_manual_complete()
+inoremap	<expr><C-h>	neocomplete#close_popup()
+inoremap 	<expr><C-g>	neocomplete#undo_completion()
+" }
+
+" neosnippet {
+let g:neosnippet#enable_preview = 1
+
+imap <C-k>     <Plug>(neosnippet_expand)
+imap <C-n>     <Plug>(neosnippet_jump)
 " }
 
 
@@ -128,7 +189,7 @@ function! Uncrustify(language)
       \ . ' -l ' . a:language
       \ . ' -c ' . g:uncrustify_cfg_file_path)
 endfunction
-"} 
+" } 
 
 
 " C {
