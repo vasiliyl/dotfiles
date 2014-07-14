@@ -1,6 +1,10 @@
 # загрузим окружение
 . ~/.env
 
+xrandr --output HDMI2 --left-of HDMI1
+xrandr --output HDMI1 --rotate left
+xrandr --output HDMI2 --rotate left
+
 eval $(gpg-agent --daemon)
 
 # перечитать конфигурацию икс-сервера
@@ -37,8 +41,6 @@ keynav
 parcellite &
 
 #gkrellm&
-
-xbindkeys
 
 xset m 3 4
 

@@ -11,20 +11,26 @@ Bundle 'gmarik/vundle'
 " General {
 Bundle 'two2tango'
 Bundle 'mbbill/undotree'
-Bundle 'YankRing.vim'
+Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'tpope/vim-surround'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'paradigm/SkyBison'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'szw/vim-ctrlspace' 
+Bundle 'szw/vim-ctrlspace'
 Bundle 'tommcdo/vim-exchange'
 "Bundle 'itchyny/lightline.vim'
 Bundle 'repmo.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
 
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'Shougo/neosnippet.vim'
-Bundle 'Shougo/neosnippet-snippets'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'sirver/ultisnips'
+Bundle 'honza/vim-snippets'
+
+"Bundle 'Shougo/neocomplete.vim'
+"Bundle 'Shougo/neosnippet.vim'
+"Bundle 'Shougo/neosnippet-snippets'
 " }
 
 " C {
@@ -33,8 +39,9 @@ Bundle 'Shougo/neosnippet-snippets'
 
 
 " Go {
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Blackrush/vim-gocode'
+"Bundle 'jnwhiteh/vim-golang'
+"Bundle 'Blackrush/vim-gocode'
+Bundle 'fatih/vim-go'
 " }
 
 " HTML {
@@ -64,8 +71,11 @@ set mousehide               " Hide the mouse cursor while typing
 
 set showcmd
 
+set directory=$HOME/.swap
 set undodir=$HOME/.undos
 set undofile
+
+
 
 set tabstop=4
 set shiftwidth=4
@@ -76,6 +86,9 @@ elseif has ('gui')          " On mac and Windows, use * register for copy-paste
     set clipboard=unnamed
 endif
 
+" delete trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 " обновление файла по C-s
 nmap <c-s> :update<CR>
@@ -83,8 +96,38 @@ imap <c-s> <Esc><c-s>a
 
 set number
 
-
 nmap S cc
+
+" закрываем скобки
+inoremap {      {}<Left>
+inoremap {<Space>  {<Space><Space>}<Esc>hi
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+" C-] закрывает скобки {
+" http://stackoverflow.com/questions/6080286/vim-magic-closing-bracket
+" Return a corresponding paren to be sent to the buffer
+function! CloseParen()
+    let parenpairs = {'(' : ')',
+                   \  '[' : ']',
+                   \  '{' : '}'}
+
+    let [m_lnum, m_col] = searchpairpos('[[({]', '', '[\])}]', 'nbW')
+
+    if (m_lnum != 0) && (m_col != 0)
+        let c = getline(m_lnum)[m_col - 1]
+        return parenpairs[c]
+    endif
+    return ''
+endfun
+
+imap <C-]> <C-r>=CloseParen()<CR>
+" }
+
+
+
+
 
 " Backups {
 " TODO
@@ -107,7 +150,7 @@ set scrolloff=15
 "set laststatus=2
 "let g:lightline = {
 "            \ 'colorscheme': 'jellybeans',
-"            \ 'active': { 
+"            \ 'active': {
 "            \ 'left': [['mode'], ['filename'], ['myfunc']],
 "            \ 'component_function': {
 "            \ 'myfunc': 'MyFunc',
@@ -128,25 +171,35 @@ let g:ctrlspace_default_mapping_key = '<leader>s'
 " }
 
 
+" YouCompleteMe {
+
+" }
+
+" ultisnips {
+let g:UltiSnipsExpandTrigger = '<C-b>'
+" }
 
 " neocomplete {
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#max_list = 30
-let g:neocomplete#disable_auto_complete = 1
-let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#max_list = 30
+"let g:neocomplete#disable_auto_complete = 1
+"let g:neocomplete#enable_smart_case = 1
 
-inoremap	<expr><C-j>	neocomplete#start_manual_complete()
-inoremap	<expr><C-h>	neocomplete#close_popup()
-inoremap 	<expr><C-g>	neocomplete#undo_completion()
+"inoremap	<expr><C-j>	neocomplete#start_manual_complete()
+"inoremap	<expr><C-h>	neocomplete#close_popup()
+"inoremap 	<expr><C-g>	neocomplete#undo_completion()
 " }
 
 " neosnippet {
-let g:neosnippet#enable_preview = 1
+"let g:neosnippet#enable_preview = 1
 
-imap <C-k>     <Plug>(neosnippet_expand)
-imap <C-n>     <Plug>(neosnippet_jump)
+"imap <C-k>     <Plug>(neosnippet_expand)
+"imap <C-n>     <Plug>(neosnippet_jump)
 " }
 
+" tagbar {
+nmap <silent> <leader>t :TagbarOpenAutoClose<CR>
+" }
 
 " Uncrustify {
 " Restore cursor position, window position, and last search after running a
@@ -181,7 +234,7 @@ endfunction
 let g:uncrustify_cfg_file_path =
     \ shellescape(fnamemodify('~/.uncrustify.cfg', ':p'))
 
-" Don't forget to add Uncrustify executable to $PATH (on Unix) or 
+" Don't forget to add Uncrustify executable to $PATH (on Unix) or
 " %PATH% (on Windows) for this command to work.
 function! Uncrustify(language)
   call Preserve(':silent %!uncrustify'
@@ -189,7 +242,7 @@ function! Uncrustify(language)
       \ . ' -l ' . a:language
       \ . ' -c ' . g:uncrustify_cfg_file_path)
 endfunction
-" } 
+" }
 
 
 " C {
@@ -198,28 +251,11 @@ autocmd FileType c autocmd BufWritePre <buffer> :call Uncrustify('c')
 
 " Go {
 autocmd FileType go setlocal noexpandtab
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-" }
+autocmd FileType go compiler go
 
-" вместо автоматического закрытия скобок используем C-] {
-let g:autoclose_on = 0
- 
-" http://stackoverflow.com/questions/6080286/vim-magic-closing-bracket
-" Return a corresponding paren to be sent to the buffer
-function! CloseParen()
-    let parenpairs = {'(' : ')',
-                   \  '[' : ']',
-                   \  '{' : '}'}
+let g:go_auto_type_info = 0
 
-    let [m_lnum, m_col] = searchpairpos('[[({]', '', '[\])}]', 'nbW')
 
-    if (m_lnum != 0) && (m_col != 0)
-        let c = getline(m_lnum)[m_col - 1]
-        return parenpairs[c]
-    endif
-    return ''
-endfun
 
-imap <C-]> <C-r>=CloseParen()<CR>
 " }
 
