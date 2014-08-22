@@ -9,6 +9,7 @@ Bundle 'gmarik/vundle'
 
 
 " General {
+Bundle 'mgutz/gosu-colors'
 Bundle 'two2tango'
 Bundle 'mbbill/undotree'
 Bundle 'maxbrunsfeld/vim-yankstack'
@@ -27,6 +28,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'sirver/ultisnips'
 Bundle 'honza/vim-snippets'
+
+Bundle 'lyuts/vim-rtags'
 
 "Bundle 'Shougo/neocomplete.vim'
 "Bundle 'Shougo/neosnippet.vim'
@@ -125,6 +128,8 @@ endfun
 imap <C-]> <C-r>=CloseParen()<CR>
 " }
 
+" ,; ставит ; в конце строки
+nmap <leader>; m`A;<Esc>``
 
 
 
@@ -245,8 +250,19 @@ endfunction
 " }
 
 
+" rtags {
+let g:rtagsUseDefaultMappings = 0
+" }
+
 " C {
+autocmd BufNewFile,BufRead *.h :set ft=c
 autocmd FileType c autocmd BufWritePre <buffer> :call Uncrustify('c')
+autocmd FileType c nmap <leader>ri :call rtags#SymbolInfo()<CR>
+autocmd FileType c nmap <leader>rd :call rtags#FindJumpTo()<CR>
+autocmd FileType c nmap <leader>rr :call rtags#FindRefs()<CR>
+autocmd FileType c nmap <leader>r/ :call rtags#FindSymbols(input('Find Symbol: '))<CR>
+autocmd FileType c nmap <leader>rR :call rtags#ReindexFile()<CR>
+
 " }
 
 " Go {
@@ -255,7 +271,8 @@ autocmd FileType go compiler go
 
 let g:go_auto_type_info = 0
 
+nmap <leader>gr :GoRun<CR>
 
 
 " }
-
+"
