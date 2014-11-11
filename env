@@ -16,18 +16,15 @@ export PAGER=less
 export PYTHONPATH=~/.local/lib/python/site-packages
 export PYTHONSTARTUP=$HOME/.pythonrc
 
-export VISUAL=gvim
+export VISUAL='gvim -f'
 export EDITOR=$VISUAL
-export GIT_EDITOR="gvim -f"
+export GIT_EDITOR='gvim -f'
 export GIT_PROXY_COMMAND=gitproxy.sh
 
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
+export ELM_PATH=$HOME/elm
+export PATH=$ELM_PATH/bin:$PATH
+
 export RTE_SDK=$HOME/Work/dpdk
-
-export http_proxy=http://lozovoy:qaz123@192.168.4.74:3128
-export https_proxy=http://lozovoy:qaz123@192.168.4.74:3128
-export no_proxy=.bifit.int
-export http_no_proxy='*.bifit.int'
-

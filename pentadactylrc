@@ -7,4 +7,7 @@ map ] <C-n>
 map { <C-u>
 map } <C-d>
 
+so ~/.pentadactyl.css
+
+
 " vim: set ft=pentadactyl:

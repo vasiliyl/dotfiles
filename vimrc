@@ -9,6 +9,9 @@ Bundle 'gmarik/vundle'
 
 
 " General {
+Bundle 'Shougo/unite.vim'
+
+"
 Bundle 'mgutz/gosu-colors'
 Bundle 'two2tango'
 Bundle 'mbbill/undotree'
@@ -24,6 +27,8 @@ Bundle 'tommcdo/vim-exchange'
 Bundle 'repmo.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'ZoomWin'
 
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'sirver/ultisnips'
@@ -34,6 +39,11 @@ Bundle 'lyuts/vim-rtags'
 "Bundle 'Shougo/neocomplete.vim'
 "Bundle 'Shougo/neosnippet.vim'
 "Bundle 'Shougo/neosnippet-snippets'
+" }
+
+" Git {
+Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
 " }
 
 " C {
@@ -51,6 +61,12 @@ Bundle 'fatih/vim-go'
 Bundle 'mattn/emmet-vim'
 " }
 
+" Dart {
+Bundle 'dart-lang/dart-vim-plugin'
+" }
+
+Bundle 'seebi/semweb.vim'
+
 " Misc {
 Bundle 'DrawIt'
 " }
@@ -63,11 +79,6 @@ Bundle 'DrawIt'
 let mapleader = ','
 
 filetype plugin indent on
-syntax on
-
-set guioptions=m
-colorscheme two2tango
-set guifont="Consolas"
 
 set mouse=a                 " Automatically enable mouse usage
 set mousehide               " Hide the mouse cursor while typing
@@ -80,8 +91,9 @@ set undofile
 
 
 
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
+set expandtab
 
 if has ('x') && has ('gui') " On Linux use + register for copy-paste
     set clipboard=unnamedplus
@@ -108,6 +120,15 @@ inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
 inoremap {}     {}
 
+inoremap (      ()<Left>
+inoremap (<Space>  (<Space><Space>)<Esc>hi
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ((     (
+inoremap ()     ()
+
+
+
+
 " C-] закрывает скобки {
 " http://stackoverflow.com/questions/6080286/vim-magic-closing-bracket
 " Return a corresponding paren to be sent to the buffer
@@ -131,6 +152,8 @@ imap <C-]> <C-r>=CloseParen()<CR>
 " ,; ставит ; в конце строки
 nmap <leader>; m`A;<Esc>``
 
+" ,F переформатирует весь файл
+nmap <leader>F gg=G<C-o><C-o>
 
 
 
@@ -139,6 +162,11 @@ nmap <leader>; m`A;<Esc>``
 " }
 
 " UI {
+
+set guioptions=cm
+set guifont=Input\ Mono\ 8
+colorscheme vl
+
 set cursorline                  " Highlight current line
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch ignorecase smartcase hlsearch
@@ -169,6 +197,9 @@ set scrolloff=15
 "\ 'right':	[['cs_info'], ['cs_key_info']],
 " }
 
+
+" Unite {
+" }
 
 " ctrlspace {
 set hidden
@@ -202,8 +233,10 @@ let g:UltiSnipsExpandTrigger = '<C-b>'
 "imap <C-n>     <Plug>(neosnippet_jump)
 " }
 
-" tagbar {
-nmap <silent> <leader>t :TagbarOpenAutoClose<CR>
+" Git {
+nmap <leader>gl :Gitv --all<CR>
+nmap <leader>gL :Gitv! --all<CR>
+vmap <leader>gL :Gitv! --all<CR>
 " }
 
 " Uncrustify {
@@ -256,7 +289,8 @@ let g:rtagsUseDefaultMappings = 0
 
 " C {
 autocmd BufNewFile,BufRead *.h :set ft=c
-autocmd FileType c autocmd BufWritePre <buffer> :call Uncrustify('c')
+autocmd FileType c setlocal equalprg=uncrustify\ -q\ -l\ c\ --frag
+autocmd FileType c autocmd BufWritePre :execute "normal! <leader>F"
 autocmd FileType c nmap <leader>ri :call rtags#SymbolInfo()<CR>
 autocmd FileType c nmap <leader>rd :call rtags#FindJumpTo()<CR>
 autocmd FileType c nmap <leader>rr :call rtags#FindRefs()<CR>
@@ -272,7 +306,13 @@ autocmd FileType go compiler go
 let g:go_auto_type_info = 0
 
 nmap <leader>gr :GoRun<CR>
-
-
 " }
-"
+
+
+" Dart {
+autocmd FileType dart setlocal equalprg=dartfmt
+" }
+
+" Python {
+autocmd FileType python setlocal equalprg=autopep8\ -a\ --max-line-length=120\ -
+" }

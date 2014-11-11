@@ -35,3 +35,5 @@ alias netstat=ss
 
 alias -g G='| grep'
 alias -g L='| less'
+
+alias grep=ag

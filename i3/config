@@ -31,6 +31,16 @@ bindsym XF86AudioRaiseVolume split h
 bindsym XF86AudioLowerVolume split v
 bindsym XF86AudioPlay floating toggle
 
+workspace 1 output HDMI2
+workspace 2 output HDMI2
+workspace 3 output HDMI2
+workspace 4 output HDMI2
+workspace 5 output HDMI2
+workspace 6 output HDMI1
+workspace 7 output HDMI1
+workspace 8 output HDMI1
+workspace 9 output HDMI1
+
 # changing workspaces with F1-F9
 bindsym F1 workspace 1
 bindsym F2 workspace 2

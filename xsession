@@ -1,7 +1,7 @@
 # загрузим окружение
 . ~/.env
 
-xrandr --output HDMI2 --left-of HDMI1
+xrandr --output HDMI2 --right-of HDMI1
 xrandr --output HDMI1 --rotate left
 xrandr --output HDMI2 --rotate left
 
