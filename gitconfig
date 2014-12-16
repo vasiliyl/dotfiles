@@ -1,0 +1,14 @@
+[alias]
+        co = checkout
+        st = status -b -uno
+        br = branch
+        u  = diff
+        d  = diff HEAD
+        o  = diff --cached
+        l = log --pretty=format:\"%h %ad | %s%Cgreen%d%Creset [%an]\" --graph --date=short
+[core]
+	autocrlf = false
+	safecrlf = true
+	gitProxy = \"none\" for git
+[push]
+	default = simple

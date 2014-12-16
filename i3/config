@@ -2,7 +2,7 @@
 set $mod Mod3
 
 # font
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango: PragmataPro 7.5
 
 # 1px borders by default
 new_window 1pixel
@@ -116,6 +116,7 @@ bindsym $mod+End restart
 bindsym $mod+Next exit
 
 bindsym F12 exec gmrun
+bindsym Pause exec xscreensaver-command -lock
 
 for_window [class="Plasma"] floating enable
 floating_minimum_size -1 x -1

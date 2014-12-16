@@ -5,8 +5,6 @@ xrandr --output HDMI2 --right-of HDMI1
 xrandr --output HDMI1 --rotate left
 xrandr --output HDMI2 --rotate left
 
-eval $(gpg-agent --daemon)
-
 # перечитать конфигурацию икс-сервера
 xrdb ~/.Xdefaults
 
@@ -15,9 +13,6 @@ setxkbmap us,ru dvp,typewriter grp:switch,compose:menu,grp_led:caps
 
 # модмап
 xmodmap ~/.Xmodmap
-
-# установим валпепер
-hsetroot -fill $(ls -1 ~/Pix/Wallpaper/*1920* | sort -R | head -n 1)
 
 # шрифты
 xset +fp ~/.fonts
@@ -31,8 +26,6 @@ xwrits typetime=55 breaktime=5 +breakclock +idle=7 +clock +lock canceltime=5 aft
 
 # xxkb
 xxkb &
-
-keynav
 
 #
 #xneur&

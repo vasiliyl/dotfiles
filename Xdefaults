@@ -36,7 +36,7 @@ Rxvt.color13: #ad7fa8
 Rxvt.color14: Cyan
 Rxvt.color15: #eeeeec
 
-Rxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-iso8859-5
+Rxvt.font: xft:PragmataPro:size=7.5
 Rxvt.scrollBar: false
 Rxvt.scrollTtyOutput: false
 Rxvt.scrollWithBuffer: false

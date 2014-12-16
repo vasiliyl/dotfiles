@@ -113,7 +113,8 @@ setopt BSD_ECHO
 DIRSTACKSIZE=20
 
 
-
+# disable flow control
+stty -ixon
 
 ####
 # Autocomplete
@@ -213,4 +214,4 @@ add-zsh-hook precmd shell_name_to_title
 add-zsh-hook preexec cur_cmd_to_title
 
 # OPAM configuration
-. /home/lozovoy/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

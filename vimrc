@@ -29,12 +29,15 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'ZoomWin'
+Bundle 'dahu/vim-asciidoc'
 
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'sirver/ultisnips'
 Bundle 'honza/vim-snippets'
 
 Bundle 'lyuts/vim-rtags'
+
+Bundle 'FredKSchott/CoVim'
 
 "Bundle 'Shougo/neocomplete.vim'
 "Bundle 'Shougo/neosnippet.vim'
@@ -164,7 +167,7 @@ nmap <leader>F gg=G<C-o><C-o>
 " UI {
 
 set guioptions=cm
-set guifont=Input\ Mono\ 8
+set guifont=PragmataPro\ 7.5
 colorscheme vl
 
 set cursorline                  " Highlight current line
