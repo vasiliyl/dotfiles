@@ -1,138 +1,99 @@
 set nocompatible
 
-" Vundle {
-filetype on
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
+call plug#begin()
 
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/unite.vim'
+Plug 'szw/vim-ctrlspace'
 
-" General {
-Bundle 'Shougo/unite.vim'
+Plug 'bkad/CamelCaseMotion'
+Plug 'junegunn/vim-easy-align'
+Plug 'mbbill/undotree'
+Plug 'myusuf3/numbers.vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wellle/targets.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'chrisbra/changesPlugin'
+Plug 'scrooloose/syntastic'
 
-"
-Bundle 'mgutz/gosu-colors'
-Bundle 'two2tango'
-Bundle 'mbbill/undotree'
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'tpope/vim-surround'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'paradigm/SkyBison'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'szw/vim-ctrlspace'
-Bundle 'tommcdo/vim-exchange'
-"Bundle 'itchyny/lightline.vim'
-Bundle 'repmo.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'godlygeek/tabular'
-Bundle 'ZoomWin'
-Bundle 'dahu/vim-asciidoc'
+Plug 'Shougo/neocomplete.vim'
 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'sirver/ultisnips'
-Bundle 'honza/vim-snippets'
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
 
-Bundle 'lyuts/vim-rtags'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite-session'
+Plug 'tsukkee/unite-help'
 
-Bundle 'FredKSchott/CoVim'
+Plug 'dbext.vim'
 
-"Bundle 'Shougo/neocomplete.vim'
-"Bundle 'Shougo/neosnippet.vim'
-"Bundle 'Shougo/neosnippet-snippets'
-" }
+Plug 'klen/python-mode'
+Plug 'davidhalter/jedi-vim'
 
-" Git {
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-" }
+Plug 'fatih/vim-go'
 
-" C {
-"Bundle 'justmao945/vim-clang'
-" }
+Plug 'elzr/vim-json'
 
+call plug#end()
 
-" Go {
-"Bundle 'jnwhiteh/vim-golang'
-"Bundle 'Blackrush/vim-gocode'
-Bundle 'fatih/vim-go'
-" }
-
-" HTML {
-Bundle 'mattn/emmet-vim'
-" }
-
-" Dart {
-Bundle 'dart-lang/dart-vim-plugin'
-" }
-
-Bundle 'seebi/semweb.vim'
-
-" Misc {
-Bundle 'DrawIt'
-" }
-
-" }
-
-
-" General {
 
 let mapleader = ','
 
-filetype plugin indent on
+" никаких таймаутов
+set notimeout nottimeout
 
-set mouse=a                 " Automatically enable mouse usage
-set mousehide               " Hide the mouse cursor while typing
+" гуй
+set guioptions=cm
+set guifont=PragmataPro\ 7.5
+colorscheme vl
 
+" отображение всякой инфы
 set showcmd
+set number
+set hlsearch
+set cursorline
+set showmatch
+set scroll=5
+set scrolloff=15
+set wildmenu wildmode=list:longest,full  " Show list instead of just completing
 
-set directory=$HOME/.swap
-set undodir=$HOME/.undos
-set undofile
+" долой тормоза
+set lazyredraw
 
-
-
-set tabstop=8
-set shiftwidth=4
-set expandtab
-
-if has ('x') && has ('gui') " On Linux use + register for copy-paste
-    set clipboard=unnamedplus
-elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+" селекшон регистр для копипаста
+if has ('x11') && has ('gui')
     set clipboard=unnamed
 endif
 
-" delete trailing whitespaces
-autocmd BufWritePre * :%s/\s\+$//e
 
+" инкрементальный поиск
+set incsearch ignorecase smartcase
+
+" tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" бэкапы и ундо
+set backupdir=$HOME/.backups
+set undodir=$HOME/.undos
+set undofile
+set noswapfile
+
+" удаление вайтспейсов
+autocmd BufWritePre * :%s/\s\+$//e
 
 " обновление файла по C-s
 nmap <c-s> :update<CR>
 imap <c-s> <Esc><c-s>a
 
-set number
+" ,; ставит ; в конце строки
+nmap <leader>; m`A;<Esc>``
 
-nmap S cc
-
-" закрываем скобки
-inoremap {      {}<Left>
-inoremap {<Space>  {<Space><Space>}<Esc>hi
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-
-inoremap (      ()<Left>
-inoremap (<Space>  (<Space><Space>)<Esc>hi
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((     (
-inoremap ()     ()
-
-
-
-
-" C-] закрывает скобки {
+" закрываем скобки с помощью C-]
 " http://stackoverflow.com/questions/6080286/vim-magic-closing-bracket
 " Return a corresponding paren to be sent to the buffer
 function! CloseParen()
@@ -150,172 +111,72 @@ function! CloseParen()
 endfun
 
 imap <C-]> <C-r>=CloseParen()<CR>
-" }
-
-" ,; ставит ; в конце строки
-nmap <leader>; m`A;<Esc>``
-
-" ,F переформатирует весь файл
-nmap <leader>F gg=G<C-o><C-o>
-
-
-
-" Backups {
-" TODO
-" }
-
-" UI {
-
-set guioptions=cm
-set guifont=PragmataPro\ 7.5
-colorscheme vl
-
-set cursorline                  " Highlight current line
-set showmatch                   " Show matching brackets/parenthesis
-set incsearch ignorecase smartcase hlsearch
-set wildmenu wildmode=list:longest,full  " Show list instead of just completing
-
-set scroll=5
-set scrolloff=15
-" }
-
-
-" }
-
-" lightline {
-"set laststatus=2
-"let g:lightline = {
-"            \ 'colorscheme': 'jellybeans',
-"            \ 'active': {
-"            \ 'left': [['mode'], ['filename'], ['myfunc']],
-"            \ 'component_function': {
-"            \ 'myfunc': 'MyFunc',
-"            \ },
-"            \ },
-"            \ }
-
-"\   'cs_info': 'ctrlspace#statusline_info_segment',
-"\   'cs_key_info': 'ctrlspace#statusline_key_info_segment',
-
-"\ 'right':	[['cs_info'], ['cs_key_info']],
-" }
 
 
 " Unite {
+
+" немного хоткеев
+
+nmap <silent> <space>f :<C-u>Unite -start-insert file/new file/async<CR>
+nmap <silent> <space>F :<C-u>Unite -start-insert file/new file_rec/git file_rec/async<CR>
+nmap <silent> <space>b :<C-u>Unite buffer<CR>
+nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
+nmap <silent> <space>o :<C-u>Unite outline<CR>
+
+let g:unite_source_history_yank_enable = 1
+nmap <silent> [unite]y :<C-u>Unite history/yank<CR>
+
 " }
 
-" ctrlspace {
+" ctrl-space {
 set hidden
-let g:ctrlspace_default_mapping_key = '<leader>s'
+let g:ctrlspace_use_tabline = 1
+let g:ctrlspace_default_mapping_key = '<space>s'
 " }
 
 
-" YouCompleteMe {
-
+" tcomment {
+let g:tcommentMapLeaderOp1 = '<Leader>c'
+let g:tcommentMapLeaderUncommentAnyway = '<Leader>c<'
+let g:tcommentMapLeaderCommentAnyway = '<Leader>c>'
 " }
 
-" ultisnips {
-let g:UltiSnipsExpandTrigger = '<C-b>'
-" }
-
-" neocomplete {
-"let g:neocomplete#enable_at_startup = 1
-"let g:neocomplete#max_list = 30
-"let g:neocomplete#disable_auto_complete = 1
-"let g:neocomplete#enable_smart_case = 1
-
-"inoremap	<expr><C-j>	neocomplete#start_manual_complete()
-"inoremap	<expr><C-h>	neocomplete#close_popup()
-"inoremap 	<expr><C-g>	neocomplete#undo_completion()
-" }
-
-" neosnippet {
-"let g:neosnippet#enable_preview = 1
-
-"imap <C-k>     <Plug>(neosnippet_expand)
-"imap <C-n>     <Plug>(neosnippet_jump)
+" changes {
+let g:changes_vcs_check = 1
 " }
 
 " Git {
-nmap <leader>gl :Gitv --all<CR>
-nmap <leader>gL :Gitv! --all<CR>
-vmap <leader>gL :Gitv! --all<CR>
+nmap <space>gl :Gitv --all<CR>
+nmap <space>gL :Gitv! --all<CR>
+vmap <space>gL :Gitv! --all<CR>
+
+let g:Gitv_CommitStep = 200
 " }
 
-" Uncrustify {
-" Restore cursor position, window position, and last search after running a
-" command.
-function! Preserve(command)
-  " Save the last search.
-  let search = @/
-
-  " Save the current cursor position.
-  let cursor_position = getpos('.')
-
-  " Save the current window position.
-  normal! H
-  let window_position = getpos('.')
-  call setpos('.', cursor_position)
-
-  " Execute the command.
-  execute a:command
-
-  " Restore the last search.
-  let @/ = search
-
-  " Restore the previous window position.
-  call setpos('.', window_position)
-  normal! zt
-
-  " Restore the previous cursor position.
-  call setpos('.', cursor_position)
-endfunction
-
-" Specify path to your Uncrustify configuration file.
-let g:uncrustify_cfg_file_path =
-    \ shellescape(fnamemodify('~/.uncrustify.cfg', ':p'))
-
-" Don't forget to add Uncrustify executable to $PATH (on Unix) or
-" %PATH% (on Windows) for this command to work.
-function! Uncrustify(language)
-  call Preserve(':silent %!uncrustify'
-      \ . ' -q '
-      \ . ' -l ' . a:language
-      \ . ' -c ' . g:uncrustify_cfg_file_path)
-endfunction
-" }
-
-
-" rtags {
-let g:rtagsUseDefaultMappings = 0
+" neocomplete {
+let g:neocomplete#enable_at_startup = 1
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" <CR>: close pum
+inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
 " }
 
 " C {
 autocmd BufNewFile,BufRead *.h :set ft=c
 autocmd FileType c setlocal equalprg=uncrustify\ -q\ -l\ c\ --frag
-autocmd FileType c autocmd BufWritePre :execute "normal! <leader>F"
-autocmd FileType c nmap <leader>ri :call rtags#SymbolInfo()<CR>
-autocmd FileType c nmap <leader>rd :call rtags#FindJumpTo()<CR>
-autocmd FileType c nmap <leader>rr :call rtags#FindRefs()<CR>
-autocmd FileType c nmap <leader>r/ :call rtags#FindSymbols(input('Find Symbol: '))<CR>
-autocmd FileType c nmap <leader>rR :call rtags#ReindexFile()<CR>
-
-" }
-
-" Go {
-autocmd FileType go setlocal noexpandtab
-autocmd FileType go compiler go
-
-let g:go_auto_type_info = 0
-
-nmap <leader>gr :GoRun<CR>
-" }
-
-
-" Dart {
-autocmd FileType dart setlocal equalprg=dartfmt
 " }
 
 " Python {
 autocmd FileType python setlocal equalprg=autopep8\ -a\ --max-line-length=120\ -
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" }
+
+" OCaml {
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/vim"
+autocmd FileType ocaml setlocal tabstop=2 shiftwidth=2
+autocmd FileType ocaml setlocal equalprg=ocp-indent\ --syntax=lwt
+autocmd FileType ocaml nmap <buffer> <leader>t <Plug>(ocpindex-echo-type)
 " }
