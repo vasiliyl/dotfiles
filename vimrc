@@ -20,6 +20,8 @@ Plug 'scrooloose/syntastic'
 
 Plug 'Shougo/neocomplete.vim'
 
+Plug 'lyuts/vim-rtags'
+
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 
@@ -27,11 +29,6 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'tsukkee/unite-help'
-
-Plug 'dbext.vim'
-
-Plug 'klen/python-mode'
-Plug 'davidhalter/jedi-vim'
 
 Plug 'fatih/vim-go'
 
@@ -165,11 +162,21 @@ inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
 " C {
 autocmd BufNewFile,BufRead *.h :set ft=c
 autocmd FileType c setlocal equalprg=uncrustify\ -q\ -l\ c\ --frag
+" rtags
+autocmd FileType c nmap <buffer> <space>ti :call rtags#SymbolInfo()<CR>
+autocmd FileType c nmap <buffer> <space>tj :call rtags#JumpTo()<CR>
+autocmd FileType c nmap <buffer> <space>tr :call rtags#FindRefs()<CR>
+" }
+
+" CPP {
+autocmd FileType cpp setlocal equalprg=uncrustify\ -q\ -l\ cpp\ --frag
+autocmd FileType cpp nmap <buffer> <space>ti :call rtags#SymbolInfo()<CR>
+autocmd FileType cpp nmap <buffer> <space>tj :call rtags#JumpTo()<CR>
+autocmd FileType cpp nmap <buffer> <space>tr :call rtags#FindRefs()<CR>
 " }
 
 " Python {
 autocmd FileType python setlocal equalprg=autopep8\ -a\ --max-line-length=120\ -
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " }
 
 " OCaml {
