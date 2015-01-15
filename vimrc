@@ -17,6 +17,8 @@ Plug 'wellle/targets.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'chrisbra/changesPlugin'
 Plug 'scrooloose/syntastic'
+Plug 'Yggdroot/indentLine'
+Plug 'chrisbra/vim-show-whitespace'
 
 Plug 'Shougo/neocomplete.vim'
 
@@ -140,6 +142,16 @@ let g:tcommentMapLeaderCommentAnyway = '<Leader>c>'
 
 " changes {
 let g:changes_vcs_check = 1
+" }
+
+"
+" отображение вайтспейсов и индентов {
+set list
+" set listchars=tab:˪\ ,eol:˼,trail:·
+set listchars=tab:˪\ ,eol:\ ,trail:·
+let g:indentLine_char = '⋮'
+let g:indentLine_setColors = 0
+let g:showwhite_space_char = '˽'
 " }
 
 " Git {

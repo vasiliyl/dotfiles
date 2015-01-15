@@ -15,7 +15,7 @@ endif
 
 hi Normal       guibg=#2e3436 guifg=#babdb6
 
-hi Comment      guibg=#2e3436 guifg=#babdb6 gui=italic
+hi Comment      guibg=#2e3436 guifg=#888a85 gui=NONE
 hi Conditional  guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Constant     guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Error        guibg=#2e3436 guifg=#babdb6 gui=NONE
@@ -26,7 +26,7 @@ hi PreProc      guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Repeat       guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Special      guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Statement    guibg=#2e3436 guifg=#babdb6 gui=NONE
-hi String       guibg=#2e3436 guifg=#babdb6 gui=italic
+hi String       guibg=#2e3436 guifg=#888a85 gui=NONE
 hi Title        guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Todo         guibg=#2e3436 guifg=#babdb6 gui=NONE
 hi Type         guibg=#2e3436 guifg=#babdb6 gui=NONE
@@ -46,6 +46,9 @@ hi Visual       guibg=#fcaf3e guifg=#ce5c00
 hi TabLine      guibg=#888a85 guifg=#babdb6
 hi TabLineFill  guibg=#babdb6
 hi TabLineSel   guibg=#2e3436 guifg=#babdb6
+hi NonText      guibg=#2e3436 guifg=#3465a4
+hi SpecialKey   guibg=#2e3436 guifg=#3465a4
+hi Conceal      guibg=#2e3436 guifg=#3465a4
 
 hi DiffAdd      guibg=#2e3436 guifg=#8ae234 gui=bold
 hi DiffChange   guibg=#2e3436 guifg=#fcaf3e gui=bold
