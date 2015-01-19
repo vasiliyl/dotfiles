@@ -9,5 +9,11 @@ map } <C-d>
 
 so ~/.pentadactyl.css
 
+" fix vertical tabs https://code.google.com/p/dactyl/issues/detail?id=1196
+style -name tabbrowser-height-fix chrome://* <<EOM
+[dactyl-australis=true] .tabbrowser-tabs {
+    max-height:       unset !important;
+}
+EOM
 
 " vim: set ft=pentadactyl:
