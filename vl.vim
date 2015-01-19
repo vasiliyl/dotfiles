@@ -47,7 +47,7 @@ hi TabLine      guibg=#888a85 guifg=#babdb6
 hi TabLineFill  guibg=#babdb6
 hi TabLineSel   guibg=#2e3436 guifg=#babdb6
 hi NonText      guibg=#2e3436 guifg=#3465a4
-hi SpecialKey   guibg=#2e3436 guifg=#3465a4
+hi SpecialKey   guibg=#2e3436 guifg=#729fcf
 hi Conceal      guibg=#2e3436 guifg=#3465a4
 
 hi DiffAdd      guibg=#2e3436 guifg=#8ae234 gui=bold
