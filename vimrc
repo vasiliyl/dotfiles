@@ -19,6 +19,7 @@ Plug 'chrisbra/changesPlugin'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'chrisbra/vim-show-whitespace'
+Plug 'Lokaltog/vim-easymotion'
 
 Plug 'Shougo/neocomplete.vim'
 
@@ -142,6 +143,13 @@ let g:tcommentMapLeaderCommentAnyway = '<Leader>c>'
 
 " changes {
 let g:changes_vcs_check = 1
+" }
+
+" easymotion {
+nmap s <Plug>(easymotion-s2)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+let g:EasyMotion_smartcase = 1
 " }
 
 "
