@@ -20,6 +20,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'chrisbra/vim-show-whitespace'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'kshenoy/vim-signature'
 
 Plug 'Shougo/neocomplete.vim'
 
@@ -32,6 +33,7 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'tsukkee/unite-help'
+Plug 'tacroe/unite-mark'
 
 Plug 'fatih/vim-go'
 
@@ -122,6 +124,7 @@ nmap <silent> <space>F :<C-u>Unite -start-insert file/new file_rec/git file_rec/
 nmap <silent> <space>b :<C-u>Unite buffer<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
 nmap <silent> <space>o :<C-u>Unite outline<CR>
+nmap <silent> <space>m :<C-u>Unite -start-insert mark<CR>
 
 let g:unite_source_history_yank_enable = 1
 nmap <silent> [unite]y :<C-u>Unite history/yank<CR>
@@ -134,6 +137,17 @@ let g:ctrlspace_use_tabline = 1
 let g:ctrlspace_default_mapping_key = '<space>s'
 " }
 
+
+" folding {
+set foldmethod=syntax
+set foldlevelstart=99
+set foldopen=search
+set foldcolumn=1
+" }
+
+" signature - метки {
+let g:SignatureMarkTextHL="'MarksColumn'"
+" }
 
 " tcomment {
 let g:tcommentMapLeaderOp1 = '<Leader>c'
@@ -152,7 +166,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:EasyMotion_smartcase = 1
 " }
 
-"
+
 " отображение вайтспейсов и индентов {
 set list
 " set listchars=tab:˪\ ,eol:˼,trail:·
