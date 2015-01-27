@@ -24,6 +24,11 @@ Plug 'kshenoy/vim-signature'
 
 Plug 'Shougo/neocomplete.vim'
 
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
+Plug 'Shougo/context_filetype.vim'
+
 Plug 'lyuts/vim-rtags'
 
 Plug 'tpope/vim-fugitive'
@@ -117,17 +122,29 @@ imap <C-]> <C-r>=CloseParen()<CR>
 
 " Unite {
 
+function! s:unite_settings() " {{{
+    nmap <buffer> <C-j> j
+    nmap <buffer> <C-k> k
+    imap <buffer> <C-j> <Plug>(unite_select_next_line)
+    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+    call unite#custom#default_action('directory', 'file')
+endfunction " }}}
+
+autocmd FileType unite call s:unite_settings()
+
 " немного хоткеев
 
-nmap <silent> <space>f :<C-u>Unite -start-insert file/new file/async<CR>
-nmap <silent> <space>F :<C-u>Unite -start-insert file/new file_rec/git file_rec/async<CR>
+nmap <silent> <space><space> :<C-u>Unite -start-insert<CR>
+nmap <silent> <space>f :<C-u>Unite -start-insert file/async file/new<CR>
+nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/async file/new<CR>
 nmap <silent> <space>b :<C-u>Unite buffer<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
 nmap <silent> <space>o :<C-u>Unite outline<CR>
-nmap <silent> <space>m :<C-u>Unite -start-insert mark<CR>
+nmap <silent> <space>m :<C-u>Unite mark<CR>
+nmap <silent> <space>k :<C-u>Unite -start-insert neosnippet<CR>
 
 let g:unite_source_history_yank_enable = 1
-nmap <silent> [unite]y :<C-u>Unite history/yank<CR>
+nmap <silent> <space>p :<C-u>Unite history/yank<CR>
 
 " }
 
@@ -191,6 +208,11 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " <CR>: close pum
 inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" }
+
+" neosnippet {
+let g:neosnippet#snippets_directory = "~/.vim/snippets"
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
 " }
 
 " C {
