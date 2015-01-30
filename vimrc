@@ -122,6 +122,8 @@ imap <C-]> <C-r>=CloseParen()<CR>
 
 " Unite {
 
+call unite#custom#profile('default', 'context', { 'winheight': 40, 'vertical_preview': 1 })
+
 function! s:unite_settings() " {{{
     nmap <buffer> <C-j> j
     nmap <buffer> <C-k> k
@@ -135,13 +137,17 @@ autocmd FileType unite call s:unite_settings()
 " немного хоткеев
 
 nmap <silent> <space><space> :<C-u>Unite -start-insert<CR>
+nmap <silent> <space>b :<C-u>Unite -auto-preview buffer<CR>
 nmap <silent> <space>f :<C-u>Unite -start-insert file/async file/new<CR>
 nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/async file/new<CR>
-nmap <silent> <space>b :<C-u>Unite buffer<CR>
-nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
-nmap <silent> <space>o :<C-u>Unite outline<CR>
-nmap <silent> <space>m :<C-u>Unite mark<CR>
 nmap <silent> <space>k :<C-u>Unite -start-insert neosnippet<CR>
+nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
+nmap <silent> <space>m :<C-u>Unite mark<CR>
+nmap <silent> <space>o :<C-u>Unite outline<CR>
+
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
 
 let g:unite_source_history_yank_enable = 1
 nmap <silent> <space>p :<C-u>Unite history/yank<CR>
