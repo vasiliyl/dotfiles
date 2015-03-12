@@ -18,7 +18,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'chrisbra/changesPlugin'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
-Plug 'chrisbra/vim-show-whitespace'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kshenoy/vim-signature'
 
@@ -27,12 +26,16 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/context_filetype.vim'
 
 Plug 'lyuts/vim-rtags'
 
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+
+Plug 'mattn/emmet-vim'
 
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
@@ -119,10 +122,9 @@ endfun
 
 imap <C-]> <C-r>=CloseParen()<CR>
 
-
 " Unite {
 
-call unite#custom#profile('default', 'context', { 'winheight': 40, 'vertical_preview': 1 })
+call unite#custom#profile('default', 'context', { 'winheight': 60, 'vertical_preview': 1 })
 
 function! s:unite_settings() " {{{
     nmap <buffer> <C-j> j
@@ -137,9 +139,10 @@ autocmd FileType unite call s:unite_settings()
 " немного хоткеев
 
 nmap <silent> <space><space> :<C-u>Unite -start-insert<CR>
-nmap <silent> <space>b :<C-u>Unite -auto-preview buffer<CR>
-nmap <silent> <space>f :<C-u>Unite -start-insert file/async file/new<CR>
-nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/async file/new<CR>
+nmap <silent> <space>b :<C-u>Unite -start-insert -auto-preview buffer<CR>
+nmap <silent> <space>t :<C-u>Unite -start-insert tab<CR>
+nmap <silent> <space>f :<C-u>Unite -start-insert file file/new<CR>
+nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/async<CR>
 nmap <silent> <space>k :<C-u>Unite -start-insert neosnippet<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
 nmap <silent> <space>m :<C-u>Unite mark<CR>
@@ -196,7 +199,6 @@ set list
 set listchars=tab:˪\ ,eol:\ ,trail:·
 let g:indentLine_char = '⋮'
 let g:indentLine_setColors = 0
-let g:showwhite_space_char = '˽'
 " }
 
 " Git {
@@ -212,8 +214,6 @@ let g:neocomplete#enable_at_startup = 1
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" <CR>: close pum
-inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
 " }
 
 " neosnippet {
@@ -225,16 +225,16 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 autocmd BufNewFile,BufRead *.h :set ft=c
 autocmd FileType c setlocal equalprg=uncrustify\ -q\ -l\ c\ --frag
 " rtags
-autocmd FileType c nmap <buffer> <space>ti :call rtags#SymbolInfo()<CR>
-autocmd FileType c nmap <buffer> <space>tj :call rtags#JumpTo()<CR>
-autocmd FileType c nmap <buffer> <space>tr :call rtags#FindRefs()<CR>
+autocmd FileType c nmap <buffer> <space>ci :call rtags#SymbolInfo()<CR>
+autocmd FileType c nmap <buffer> <space>cj :call rtags#JumpTo()<CR>
+autocmd FileType c nmap <buffer> <space>cr :<C-u>Unite -auto-preview rtags/refs<CR>
 " }
 
 " CPP {
 autocmd FileType cpp setlocal equalprg=uncrustify\ -q\ -l\ cpp\ --frag
-autocmd FileType cpp nmap <buffer> <space>ti :call rtags#SymbolInfo()<CR>
-autocmd FileType cpp nmap <buffer> <space>tj :call rtags#JumpTo()<CR>
-autocmd FileType cpp nmap <buffer> <space>tr :call rtags#FindRefs()<CR>
+autocmd FileType cpp nmap <buffer> <space>ci :call rtags#SymbolInfo()<CR>
+autocmd FileType cpp nmap <buffer> <space>cj :call rtags#JumpTo()<CR>
+autocmd FileType cpp nmap <buffer> <space>cr :<C-u>Unite -auto-preview rtags/refs<CR>
 " }
 
 " Python {
@@ -248,4 +248,11 @@ execute "set rtp+=" . g:opamshare . "/vim"
 autocmd FileType ocaml setlocal tabstop=2 shiftwidth=2
 autocmd FileType ocaml setlocal equalprg=ocp-indent\ --syntax=lwt
 autocmd FileType ocaml nmap <buffer> <leader>t <Plug>(ocpindex-echo-type)
+" }
+
+" HTML {
+" let g:user_emmet_install_global = 0
+
+" nmap <leader>He  <Plug>(emmet-expand-abbr)
+" vmap H           <Plug>(emmet-expand-abbr)
 " }
