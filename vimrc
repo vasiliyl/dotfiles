@@ -15,7 +15,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'chrisbra/changesPlugin'
+Plug 'triglav/vim-visual-increment'
+" Plug 'chrisbra/changesPlugin'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'Lokaltog/vim-easymotion'
@@ -102,6 +103,8 @@ imap <c-s> <Esc><c-s>a
 
 " ,; ставит ; в конце строки
 nmap <leader>; m`A;<Esc>``
+" ,, ставит , в конце строки
+nmap <leader>, m`A,<Esc>``
 
 " закрываем скобки с помощью C-]
 " http://stackoverflow.com/questions/6080286/vim-magic-closing-bracket
@@ -131,6 +134,9 @@ function! s:unite_settings() " {{{
     nmap <buffer> <C-k> k
     imap <buffer> <C-j> <Plug>(unite_select_next_line)
     imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+
+    nmap <silent><buffer><expr> s unite#do_action('split')
+    nmap <silent><buffer><expr> v unite#do_action('vsplit')
     call unite#custom#default_action('directory', 'file')
 endfunction " }}}
 
@@ -149,7 +155,7 @@ nmap <silent> <space>m :<C-u>Unite mark<CR>
 nmap <silent> <space>o :<C-u>Unite outline<CR>
 
 let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_default_opts = '--vimgrep --nocolor --nogroup'
 let g:unite_source_grep_recursive_opt = ''
 
 let g:unite_source_history_yank_enable = 1
@@ -196,7 +202,7 @@ let g:EasyMotion_smartcase = 1
 " отображение вайтспейсов и индентов {
 set list
 " set listchars=tab:˪\ ,eol:˼,trail:·
-set listchars=tab:˪\ ,eol:\ ,trail:·
+set listchars=tab:؞\ ,eol:\ ,trail:·
 let g:indentLine_char = '⋮'
 let g:indentLine_setColors = 0
 " }

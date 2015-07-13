@@ -1,6 +1,6 @@
 group user
 
-set defsearch=google
+set defsearch=duckduckgo
 
 map [ <C-p>
 map ] <C-n>

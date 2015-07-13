@@ -173,8 +173,6 @@ function pag () {
     PIDLIST=$(pgrep -d, -f "$@")
     if [ -n "$PIDLIST" ] ; then
         ps -f -p "$PIDLIST" ;
-    else
-        echo No matches
     fi
 }
 
