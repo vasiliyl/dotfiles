@@ -122,12 +122,29 @@ stty -ixon
 compctl -c sudo
 
 
-
 #Prompting
+
+# If the PROMPT_SUBST option is set, the prompt string is first subjected to parameter expansion, command substitution and arithmetic expansion.
+setopt PROMPT_SUBST
+
 autoload -Uz promptinit
 promptinit
-prompt adam2
-#
+
+function my_git_current_branch () {
+    git rev-parse --abbrev-ref HEAD 2>/dev/null
+}
+
+function my_git_email () {
+    git config user.email
+}
+
+function my_git_repository_name () {
+    basename "$(git rev-parse --show-toplevel 2>/dev/null)"
+}
+
+export PROMPT="$prompt_newline%K{16}%E [%!] [%*] [\$(my_git_repository_name)@\$(my_git_current_branch)] [\$(my_git_email)] %k$prompt_newline  %~$prompt_newline> "
+
+
 
 # load locale
 source ~/.locale
