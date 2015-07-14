@@ -48,6 +48,8 @@ Plug 'fatih/vim-go'
 
 Plug 'elzr/vim-json'
 
+Plug 'ledger/vim-ledger'
+
 call plug#end()
 
 
