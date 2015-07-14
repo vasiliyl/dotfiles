@@ -2,7 +2,7 @@
 set $mod Mod3
 
 # font
-font pango: PragmataPro 7.5
+font pango: PragmataPro 7
 
 # 1px borders by default
 new_window 1pixel

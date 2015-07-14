@@ -1,5 +1,3 @@
-Xft.dpi: 86
-
 ! Rxvt.color0:               #2e2e34343636
 ! Rxvt.color1:               #cccc00000000
 ! Rxvt.color2:               #4e4ea0a00000
@@ -37,7 +35,7 @@ Rxvt.color14: Cyan
 Rxvt.color15: #eeeeec
 Rxvt.color16: #212628
 
-Rxvt.font: xft:PragmataPro:size=7.5
+Rxvt.font: xft:PragmataPro:size=7
 Rxvt.scrollBar: false
 Rxvt.scrollTtyOutput: false
 Rxvt.scrollWithBuffer: false

@@ -58,7 +58,7 @@ set notimeout nottimeout
 
 " гуй
 set guioptions=cm
-set guifont=PragmataPro\ 7.5
+set guifont=PragmataPro\ 7
 colorscheme vl
 
 " отображение всякой инфы
