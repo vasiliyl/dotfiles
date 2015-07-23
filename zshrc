@@ -155,6 +155,8 @@ source ~/.alias
 
 #complist module
 zmodload zsh/complist
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script "$(which stack)")"
 
 # keyboard setup
 

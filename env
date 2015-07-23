@@ -21,3 +21,5 @@ export EDITOR="$VISUAL"
 
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+
+export PATH="`stack --no-terminal path --bin-path`"

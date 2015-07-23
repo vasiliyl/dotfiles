@@ -8,6 +8,7 @@
     l = log --pretty=format:\"%h | %s%Cgreen%d%Creset [%an : %ad] <%cn : %cd> \" --graph --date=iso
     la = log --pretty=format:\"%h | %s%Cgreen%d%Creset [%an : %ad] <%cn : %cd> \" --graph --date=iso --all
     f = fetch --all
+    amend = commit --amend --no-edit
 [core]
     autocrlf = false
     safecrlf = true
