@@ -22,6 +22,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kshenoy/vim-signature'
 
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-operator-replace'
+
 Plug 'Shougo/neocomplete.vim'
 
 Plug 'Shougo/neosnippet'
@@ -43,6 +46,8 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'tsukkee/unite-help'
 Plug 'tacroe/unite-mark'
+
+Plug 'raichoo/purescript-vim'
 
 Plug 'fatih/vim-go'
 
@@ -198,6 +203,10 @@ nmap s <Plug>(easymotion-s2)
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 let g:EasyMotion_smartcase = 1
+" }
+
+" replace {
+map R <Plug>(operator-replace)
 " }
 
 
