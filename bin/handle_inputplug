@@ -1,0 +1,17 @@
+#!/bin/sh
+
+event_type=$1
+device_id=$2
+device_type=$3
+device_name=$4
+
+load_xkb() {
+    xkbcomp -I$HOME/.xkb -i "${device_id}" $HOME/.xkb/"${1}".xkb $DISPLAY
+}
+
+if [ "${event_type}" = "XIDeviceEnabled" -a "${device_type}" = "XISlaveKeyboard" ]; then
+    case "${device_name}" in
+        "Microsoft Microsoft® 2.4GHz Transceiver V1.0") load_xkb nek ;;
+        "TrulyErgonomic.com Truly Ergonomic Computer Keyboard") load_xkb tek ;;
+    esac
+fi

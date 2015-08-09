@@ -1,0 +1,33 @@
+partial modifier_keys
+xkb_symbols "nek" {
+  replace key <CAPS> {
+    [ VoidSymbol, VoidSymbol ]
+  };
+  modifier_map Control { <CAPS> };
+
+  replace key <LCTL> {
+    [ ISO_Next_Group ]
+  };
+
+  replace key <RTSH> {
+    [ Hyper_R ]
+  };
+  modifier_map Mod3 { <RTSH> };
+};
+
+partial modifier_keys
+xkb_symbols "tek" {
+  replace key <HKTG> {
+    [ ISO_Next_Group ]
+  };
+
+  replace key <COMP> {
+    [ Escape ]
+  };
+
+  replace key <RCTL> {
+    [ Hyper_R ]
+  };
+  modifier_map Mod3 { <RCTL> };
+};
+
