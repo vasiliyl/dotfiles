@@ -12,6 +12,7 @@ load_xkb() {
 if [ "${event_type}" = "XIDeviceEnabled" -a "${device_type}" = "XISlaveKeyboard" ]; then
     case "${device_name}" in
         "Microsoft Microsoft® 2.4GHz Transceiver V1.0") load_xkb nek ;;
+        "Microsoft Natural® Ergonomic Keyboard 4000") load_xkb nek ;;
         "TrulyErgonomic.com Truly Ergonomic Computer Keyboard") load_xkb tek ;;
     esac
 fi
