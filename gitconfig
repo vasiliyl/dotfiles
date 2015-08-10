@@ -9,6 +9,7 @@
     la = log --pretty=format:\"%h | %s%Cgreen%d%Creset [%an : %ad] <%cn : %cd> \" --graph --date=iso --all
     f = fetch --all
     amend = commit --amend --no-edit
+    ar = archive --format=tar
 [core]
     autocrlf = false
     safecrlf = true
