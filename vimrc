@@ -228,6 +228,11 @@ let g:Gitv_CommitStep = 200
 
 " neocomplete {
 let g:neocomplete#enable_at_startup = 1
+" <CR>: close popup and send <CR>
+inoremap <silent> <CR> <C-r>=<SID>neocomplete_cr_function()<CR>
+function! s:neocomplete_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+endfunction
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
