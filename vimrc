@@ -4,7 +4,6 @@ call plug#begin()
 
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/unite.vim'
-Plug 'szw/vim-ctrlspace'
 
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-easy-align'
@@ -33,11 +32,13 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/unite-session'
 
 Plug 'lyuts/vim-rtags'
 
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+Plug 'kmnk/vim-unite-giti'
 
 Plug 'mattn/emmet-vim'
 
@@ -47,9 +48,19 @@ Plug 'Shougo/unite-session'
 Plug 'tsukkee/unite-help'
 Plug 'tacroe/unite-mark'
 
+" Plug 'enomsg/vim-haskellConcealPlus'
+Plug 'bitc/vim-hdevtools'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
+Plug 'Twinside/vim-syntax-haskell-cabal'
+Plug 'ujihisa/unite-haskellimport'
+Plug 'itchyny/vim-haskell-indent'
+
 Plug 'raichoo/purescript-vim'
 
 Plug 'fatih/vim-go'
+
+Plug 'ujihisa/repl.vim'
 
 Plug 'elzr/vim-json'
 
@@ -113,6 +124,12 @@ nmap <leader>; m`A;<Esc>``
 " ,, ставит , в конце строки
 nmap <leader>, m`A,<Esc>``
 
+" скачем по буферам с контролои
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-h> <c-w>h
+nmap <c-l> <c-w>l
+
 " закрываем скобки с помощью C-]
 " http://stackoverflow.com/questions/6080286/vim-magic-closing-bracket
 " Return a corresponding paren to be sent to the buffer
@@ -131,6 +148,10 @@ function! CloseParen()
 endfun
 
 imap <C-]> <C-r>=CloseParen()<CR>
+
+" консилим всё, что задефайнено, но текущую строку анконсилим
+set conceallevel=1
+set concealcursor="nc"
 
 " Unite {
 
@@ -160,6 +181,7 @@ nmap <silent> <space>k :<C-u>Unite -start-insert neosnippet<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
 nmap <silent> <space>m :<C-u>Unite mark<CR>
 nmap <silent> <space>o :<C-u>Unite outline<CR>
+nmap <silent> <space>S :<C-u>Unite session session/new<CR>
 
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--vimgrep --nocolor --nogroup'
@@ -216,14 +238,14 @@ set list
 set listchars=tab:؞\ ,eol:\ ,trail:·
 let g:indentLine_char = '⋮'
 let g:indentLine_setColors = 0
+" никаких автоустановок переменных
+let g:indentLine_noConcealCursor = 1
 " }
 
 " Git {
-nmap <space>gl :Gitv --all<CR>
-nmap <space>gL :Gitv! --all<CR>
-vmap <space>gL :Gitv! --all<CR>
-
-let g:Gitv_CommitStep = 200
+nmap <space>gb :<C-u>Unite giti/branch<CR>
+nmap <space>gl :<C-u>Unite giti/log<CR>
+nmap <space>gs :<C-u>Unite giti/status<CR>
 " }
 
 " neocomplete {
@@ -277,4 +299,8 @@ autocmd FileType ocaml nmap <buffer> <leader>t <Plug>(ocpindex-echo-type)
 
 " nmap <leader>He  <Plug>(emmet-expand-abbr)
 " vmap H           <Plug>(emmet-expand-abbr)
+" }
+
+" Haskel {
+autocmd FileType haskell nmap <buffer> <space>hi :<C-u>Unite -start-insert haskellimport<CR>
 " }
