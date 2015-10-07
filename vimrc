@@ -20,6 +20,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kshenoy/vim-signature'
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
@@ -45,8 +46,10 @@ Plug 'mattn/emmet-vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
-Plug 'tsukkee/unite-help'
 Plug 'tacroe/unite-mark'
+Plug 'thinca/vim-unite-history'
+Plug 'tsukkee/unite-help'
+Plug 'osyo-manga/unite-quickfix'
 
 " Plug 'enomsg/vim-haskellConcealPlus'
 Plug 'bitc/vim-hdevtools'
@@ -54,7 +57,6 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'Twinside/vim-syntax-haskell-cabal'
 Plug 'ujihisa/unite-haskellimport'
-Plug 'itchyny/vim-haskell-indent'
 
 Plug 'raichoo/purescript-vim'
 
@@ -177,8 +179,10 @@ nmap <silent> <space>b :<C-u>Unite -start-insert -auto-preview buffer<CR>
 nmap <silent> <space>t :<C-u>Unite -start-insert tab<CR>
 nmap <silent> <space>f :<C-u>Unite -start-insert file file/new<CR>
 nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/async<CR>
+nmap <silent> <space>H :<C-u>Unite history/command<CR>
 nmap <silent> <space>k :<C-u>Unite -start-insert neosnippet<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
+nmap <silent> <space>L :<C-u>Unite quickfix location_list<CR>
 nmap <silent> <space>m :<C-u>Unite mark<CR>
 nmap <silent> <space>o :<C-u>Unite outline<CR>
 nmap <silent> <space>S :<C-u>Unite session session/new<CR>
@@ -271,14 +275,18 @@ autocmd FileType c setlocal equalprg=uncrustify\ -q\ -l\ c\ --frag
 " rtags
 autocmd FileType c nmap <buffer> <space>ci :call rtags#SymbolInfo()<CR>
 autocmd FileType c nmap <buffer> <space>cj :call rtags#JumpTo()<CR>
-autocmd FileType c nmap <buffer> <space>cr :<C-u>Unite -auto-preview rtags/refs<CR>
+autocmd FileType c nmap <buffer> <space>cp :<C-u>Unite -auto-preview rtags/project<CR>
+autocmd FileType c nmap <buffer> <space>cr :<C-u>Unite -auto-preview rtags/references<CR>
+autocmd FileType c nmap <buffer> <space>cs :<C-u>Unite rtags/symbol<CR>
 " }
 
 " CPP {
 autocmd FileType cpp setlocal equalprg=uncrustify\ -q\ -l\ cpp\ --frag
 autocmd FileType cpp nmap <buffer> <space>ci :call rtags#SymbolInfo()<CR>
 autocmd FileType cpp nmap <buffer> <space>cj :call rtags#JumpTo()<CR>
-autocmd FileType cpp nmap <buffer> <space>cr :<C-u>Unite -auto-preview rtags/refs<CR>
+autocmd FileType cpp nmap <buffer> <space>cp :<C-u>Unite -auto-preview rtags/project<CR>
+autocmd FileType cpp nmap <buffer> <space>cr :<C-u>Unite -auto-preview rtags/references<CR>
+autocmd FileType cpp nmap <buffer> <space>cs :<C-u>Unite rtags/symbol<CR>
 " }
 
 " Python {
@@ -303,4 +311,14 @@ autocmd FileType ocaml nmap <buffer> <leader>t <Plug>(ocpindex-echo-type)
 
 " Haskel {
 autocmd FileType haskell nmap <buffer> <space>hi :<C-u>Unite -start-insert haskellimport<CR>
+
+autocmd FileType haskell nmap <buffer> <leader>hc :<C-u>GhcModTypeClear<CR>
+autocmd FileType haskell nmap <buffer> <leader>hi :<C-u>GhcModInfoPreview!<CR>
+autocmd FileType haskell nmap <buffer> <leader>ht :<C-u>GhcModType!<CR>
+autocmd FileType haskell nmap <buffer> <leader>hT :<C-u>GhcModTypeInsert!<CR>
+
+let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
+function! GhcModQuickFix()
+  :Unite -no-empty quickfix
+endfunction
 " }
