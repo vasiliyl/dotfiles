@@ -18,8 +18,6 @@ call plug#begin()
 " Plug 'Yggdroot/indentLine'
 " Plug 'bitc/vim-hdevtools'
 " Plug 'chrisbra/changesPlugin
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'eagletmt/neco-ghc'
 " Plug 'elzr/vim-json'
 " Plug 'enomsg/vim-haskellConcealPlus'
 " Plug 'fatih/vim-go'
@@ -46,6 +44,8 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'benekastah/neomake'
 Plug 'bkad/CamelCaseMotion'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 Plug 'jreybert/vimagit'
 Plug 'kana/vim-operator-replace'
 Plug 'kana/vim-operator-user'
@@ -284,15 +284,15 @@ autocmd FileType cpp setlocal equalprg=uncrustify\ -q\ -l\ cpp\ --frag
 " }
 
 " Haskel {
-autocmd FileType haskell
-    \ let b:closer = 1 |
-    \ let b:closer_flags = '([{'
+"autocmd FileType haskell
+    "\ let b:closer = 1 |
+    "\ let b:closer_flags = '([{'
 
 "autocmd FileType haskell nmap <buffer> <space>hi :<C-u>Unite -start-insert haskellimport<CR>
 
-"autocmd FileType haskell nmap <buffer> <leader>hc :<C-u>GhcModTypeClear<CR>
-"autocmd FileType haskell nmap <buffer> <leader>hi :<C-u>GhcModInfoPreview!<CR>
-"autocmd FileType haskell nmap <buffer> <leader>ht :<C-u>GhcModType!<CR>
-"autocmd FileType haskell nmap <buffer> <leader>hT :<C-u>GhcModTypeInsert!<CR>
+autocmd FileType haskell nmap <buffer> <leader>hc :<C-u>GhcModTypeClear<CR>
+autocmd FileType haskell nmap <buffer> <leader>hi :<C-u>GhcModInfoPreview!<CR>
+autocmd FileType haskell nmap <buffer> <leader>ht :<C-u>GhcModType!<CR>
+autocmd FileType haskell nmap <buffer> <leader>hT :<C-u>GhcModTypeInsert!<CR>
 " }
 
