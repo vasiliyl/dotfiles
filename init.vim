@@ -1,5 +1,9 @@
 set nocompatible
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 call plug#begin()
 
 " Plug 'Shougo/context_filetype.vim'
@@ -34,7 +38,7 @@ call plug#begin()
 " Plug 'ujihisa/unite-haskellimport'
 " Plug 'wellle/targets.vim'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/tabpagebuffer.vim'
 Plug 'Shougo/unite-outline'
