@@ -37,12 +37,12 @@ call plug#begin()
 " Plug 'wellle/targets.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/tabpagebuffer.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
-Plug 'benekastah/neomake'
 Plug 'bkad/CamelCaseMotion'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
@@ -51,6 +51,7 @@ Plug 'kana/vim-operator-replace'
 Plug 'kana/vim-operator-user'
 Plug 'kshenoy/vim-signature'
 Plug 'myusuf3/numbers.vim'
+Plug 'neomake/neomake'
 Plug 'rstacruz/vim-closer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tacroe/unite-mark'
@@ -294,5 +295,12 @@ autocmd FileType haskell nmap <buffer> <leader>hc :<C-u>GhcModTypeClear<CR>
 autocmd FileType haskell nmap <buffer> <leader>hi :<C-u>GhcModInfoPreview!<CR>
 autocmd FileType haskell nmap <buffer> <leader>ht :<C-u>GhcModType!<CR>
 autocmd FileType haskell nmap <buffer> <leader>hT :<C-u>GhcModTypeInsert!<CR>
+
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+let g:necoghc_enable_detailed_browse = 1
+
+autocmd FileType haskell autocmd BufWritePost <buffer> Neomake
 " }
 
