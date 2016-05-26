@@ -148,6 +148,9 @@ set concealcursor="nc"
 
 set clipboard+=unnamedplus
 
+" текущая строка всегда по центру
+autocmd CursorMoved * normal zz
+
 " }
 
 
@@ -177,7 +180,8 @@ autocmd FileType unite call s:unite_settings()
 nmap <silent> <space><space> :<C-u>Unite -start-insert<CR>
 nmap <silent> <space>b :<C-u>Unite -buffer-name=buffers -start-insert -auto-preview buffer_tab buffer<CR>
 nmap <silent> <space>t :<C-u>Unite -start-insert tab<CR>
-nmap <silent> <space>f :<C-u>Unite -start-insert file_rec/neovim2 file/new<CR>
+nmap <silent> <space>f :<C-u>Unite -start-insert file file_rec/git file/new<CR>
+nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/neovim<CR>
 nmap <silent> <space>H :<C-u>Unite history/command<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
 nmap <silent> <space>L :<C-u>Unite quickfix location_list<CR>
