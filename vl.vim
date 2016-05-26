@@ -39,8 +39,8 @@ hi Directory    ctermbg=0 ctermfg=12 guibg=#2e3436 guifg=#729fcf
 hi IncSearch    ctermbg=11 ctermfg=3 guibg=#fce94f guifg=#c4a000
 hi LineNr       ctermbg=0 ctermfg=8 guibg=#2e3436 guifg=#555753
 hi MatchParen   ctermbg=0 ctermfg=11 guibg=#2e3436 guifg=#fce94f
-hi Pmenu		ctermbg=7 ctermfg=8 guibg=#babdb6 guifg=#555753
-hi PmenuSel		ctermbg=8 ctermfg=7 guibg=#555753 guifg=#babdb6
+hi Pmenu        ctermbg=7 ctermfg=8 guibg=#babdb6 guifg=#555753
+hi PmenuSel     ctermbg=8 ctermfg=7 guibg=#555753 guifg=#babdb6
 hi Search       ctermbg=11 ctermfg=3 guibg=#fce94f guifg=#c4a000
 hi Visual       ctermfg=9 ctermfg=1 guibg=#fcaf3e guifg=#ce5c00
 
@@ -61,3 +61,8 @@ hi DiffAdd      ctermbg=0 ctermfg=10 guibg=#2e3436 guifg=#8ae234 gui=bold
 hi DiffChange   ctermbg=0 ctermfg=9 guibg=#2e3436 guifg=#fcaf3e gui=bold
 hi DiffDelete   ctermbg=0 ctermfg=8 guibg=#2e3436 guifg=#555753 gui=bold
 hi DiffText     ctermbg=0 ctermfg=9 guibg=#2e3436 guifg=#fcaf3e gui=bold
+
+hi EasyMotionTarget ctermbg=none ctermfg=2
+hi EasyMotionTarget2First ctermbg=none ctermfg=red
+hi EasyMotionTarget2Second ctermbg=none ctermfg=lightred
+hi EasyMotionMoveHL ctermbg=green ctermfg=black
