@@ -28,7 +28,6 @@ call plug#begin()
 " Plug 'lyuts/vim-rtags'
 " Plug 'mattn/emmet-vim'
 " Plug 'mbbill/undotree'
-" Plug 'osyo-manga/unite-quickfix'
 " Plug 'raichoo/purescript-vim'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tsukkee/unite-help'
@@ -52,6 +51,7 @@ Plug 'kana/vim-operator-user'
 Plug 'kshenoy/vim-signature'
 Plug 'myusuf3/numbers.vim'
 Plug 'neomake/neomake'
+Plug 'osyo-manga/unite-quickfix'
 Plug 'rstacruz/vim-closer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tacroe/unite-mark'
@@ -184,7 +184,7 @@ nmap <silent> <space>f :<C-u>Unite -start-insert file file_rec/git file/new<CR>
 nmap <silent> <space>F :<C-u>Unite -start-insert file_rec/neovim<CR>
 nmap <silent> <space>H :<C-u>Unite history/command<CR>
 nmap <silent> <space>l :<C-u>Unite -start-insert line<CR>
-nmap <silent> <space>L :<C-u>Unite quickfix location_list<CR>
+nmap <silent> <space>L :<C-u>Unite -auto-preview location_list<CR>
 nmap <silent> <space>m :<C-u>Unite mark<CR>
 nmap <silent> <space>o :<C-u>Unite outline<CR>
 
@@ -200,6 +200,8 @@ nmap <silent> <space>p :<C-u>Unite history/yank<CR>
 
 " deoplete {
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#max_abbr_width = 240
+let g:deoplete#max_menu_width = 240
 " }
 
 " " ctrl-space {
